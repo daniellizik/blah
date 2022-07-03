@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
-import { Button, ButtonColor } from '@tablecheck/tablekit-button';
+import {
+  Button,
+  ButtonColor,
+  ButtonAppearance
+} from '@tablecheck/tablekit-button';
 import { Icon } from '@tablecheck/tablekit-icon';
 import { Input, Label } from '@tablecheck/tablekit-input';
 import { PanelPosition } from '@tablecheck/tablekit-panel';
@@ -128,9 +132,12 @@ export function FormPanel({
                 <Icon icon={isDoubleLockChecked ? faCheck : faTimes} />
               }
               onClick={() => setDoubleLock(!isDoubleLockChecked)}
-              color={
-                isDoubleLockChecked ? ButtonColor.Primary : ButtonColor.Ghost
+              appearance={
+                isDoubleLockChecked
+                  ? ButtonAppearance.Solid
+                  : ButtonAppearance.Outline
               }
+              color={ButtonColor.Primary}
             >
               {isDoubleLockChecked ? 'Enabled' : 'Disabled'}
             </Button>
@@ -142,9 +149,12 @@ export function FormPanel({
               {Object.values(Unit).map((unitValue) => (
                 <Button
                   onClick={() => setUnit(unitValue)}
-                  color={
-                    unit === unitValue ? ButtonColor.Primary : ButtonColor.Ghost
+                  appearance={
+                    unit === unitValue
+                      ? ButtonAppearance.Solid
+                      : ButtonAppearance.Outline
                   }
+                  color={ButtonColor.Primary}
                 >
                   {unitValue}
                 </Button>
